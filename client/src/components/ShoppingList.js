@@ -2,19 +2,19 @@ import React, { Component } from 'react';
 import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import {v1 as uuid} from 'uuid';        // uuid gives a different id everytime it is called
+import { connect } from 'react-redux';
+import { getItems } from '../actions/itemActions';
+import PropTypes from 'prop-types';
 
 class ShoppingList extends Component {
-    state = {
-        items: [
-            { id: uuid(), name: 'Eggs' },
-            { id: uuid(), name: 'Milk'},
-            { id: uuid(), name: 'Steak'},
-            { id: uuid(), name: 'Water'}
-        ]
+    // Lifecycle method that runs when the component mounts
+    // Wehn you're are calling an action or making an API request
+    componentDidMount() {
+        this.props.getItems();
     }
 
     render() {
-        const{ items } = this.state;
+        const { items } = this.props.item;
         return <Container>
             <Button
                 color="dark"
@@ -55,4 +55,12 @@ class ShoppingList extends Component {
     }
 }
 
-export default ShoppingList;
+ShoppingList.propTypes = {
+    getItems: PropTypes.func.isRequired,
+    item: PropTypes.object.isRequired
+}
+
+const mapStateToProps = (state) => ({
+    item: state.item        // 'item' because we used item in our reducers/index.js
+});
+export default connect(mapStateToProps, { getItems })(ShoppingList);
