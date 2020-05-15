@@ -5,6 +5,13 @@ import { connect } from 'react-redux';
 import { getItems, deleteItem } from '../actions/itemActions';
 import PropTypes from 'prop-types';
 
+/**
+ * This is an example component. It is a list of shopping list items. We import
+ * the class ShoppingList in our app.js to use it.
+ * 
+ * At the very bottom, we connect props (actions) that can change the state.
+ */
+
 class ShoppingList extends Component {
     // Lifecycle method that runs when the component mounts
     // Wehn you're are calling an action or making an API request
@@ -59,11 +66,16 @@ ShoppingList.propTypes = {
     item: PropTypes.object.isRequired
 }
 
+/**
+ * Takes a peice of state and maps it to aproprties variable that this component
+ * can use
+ * @param {store-state} state 
+ */
 const mapStateToProps = (state) => ({
     item: state.item        // 'item' because we used item in our reducers/index.js
 });
 
-// add all action functions to here
+// Connecting the properties list to the store
 export default connect(mapStateToProps,
     { getItems, deleteItem }
 )(ShoppingList);
