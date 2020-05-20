@@ -12,7 +12,6 @@ import {
 // A container is a component that is hooked to redux  (using redux state inside a react component)
 import { connect } from 'react-redux';
 import { addItem } from '../actions/itemActions';
-import {v1 as uuid} from 'uuid';        // uuid gives a different id everytime it is called
 
 // Custom form alllows you to add an item
 class ItemModal extends Component {
@@ -35,7 +34,6 @@ class ItemModal extends Component {
         e.preventDefault();
 
         const newItem =  {
-            id: uuid(),
             name: this.state.name
         }
 
