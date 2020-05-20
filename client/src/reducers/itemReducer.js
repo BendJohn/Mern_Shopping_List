@@ -1,4 +1,3 @@
-import {v1 as uuid} from 'uuid';        // uuid gives a different id everytime it is called
 import { GET_ITEMS, ADD_ITEM, DELETE_ITEM, ITEMS_LOADING } from '../actions/types';
 
 /**
