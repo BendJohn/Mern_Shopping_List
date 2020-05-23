@@ -21,6 +21,7 @@ mongoose
 // Use Routes - anything that goes to /api/items should refer to the file ^^^
 app.use('/api/items', require('./routes/api/items'));
 app.use('/api/users', require('./routes/api/users'));
+app.use('/api/auth', require('./routes/api/auth'));
 
 // Serve static assets (in build) if in production
 if (process.env.NODE_ENV === 'production') {
